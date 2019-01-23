@@ -4,6 +4,7 @@ go:
 
 before_install:
 # Download the dependencies
+- export GO111MODULE=on
 - go mod download
 - go mod vendor
 - go mod verify

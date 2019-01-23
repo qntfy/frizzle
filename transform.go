@@ -33,7 +33,7 @@ type SimpleSepTransformer struct {
 func (st *SimpleSepTransformer) SendTransform() Transform {
 	return func(m Msg) Msg {
 		d := m.Data()
-		if !bytes.Equal(d[len(d)-len(st.sep):len(d)], st.sep) {
+		if !bytes.Equal(d[len(d)-len(st.sep):], st.sep) {
 			d = append(d, st.sep...)
 		}
 		return NewSimpleMsg(m.ID(), d, m.Timestamp())
@@ -44,7 +44,7 @@ func (st *SimpleSepTransformer) SendTransform() Transform {
 func (st *SimpleSepTransformer) ReceiveTransform() Transform {
 	return func(m Msg) Msg {
 		d := m.Data()
-		if bytes.Equal(d[len(d)-len(st.sep):len(d)], st.sep) {
+		if bytes.Equal(d[len(d)-len(st.sep):], st.sep) {
 			d = d[0 : len(d)-len(st.sep)]
 		}
 		return NewSimpleMsg(m.ID(), d, m.Timestamp())

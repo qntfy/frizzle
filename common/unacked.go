@@ -12,7 +12,7 @@ type UnAcked struct {
 	sync.RWMutex
 }
 
-// NewUnAcked returns an initalized struct
+// NewUnAcked returns an initialized struct
 func NewUnAcked() *UnAcked {
 	return &UnAcked{
 		unAcked: make(map[string]frizzle.Msg),
