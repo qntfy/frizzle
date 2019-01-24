@@ -7,7 +7,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/qntfy/frizzle#1)](https://goreportcard.com/report/github.com/qntfy/frizzle)
 [![GoDoc](https://godoc.org/github.com/qntfy/frizzle?status.svg)](http://godoc.org/github.com/qntfy/frizzle)
 
-Frizzle is a magic message (`Msg`) bus designed for parallel processing w many goroutines.
+Frizzle is a magic message (`Msg`) bus designed for parallel processing with many goroutines.
   * `Receive()` messages from a configured `Source`
   * Do your processing, possibly `Send()` each `Msg` on to one or more `Sink` destinations
   * `Ack()` (or `Fail()`) the `Msg`  to notify the `Source` that processing completed
