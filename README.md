@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/qntfy/frizzle/badge.svg?branch=master)](https://coveralls.io/github/qntfy/frizzle?branch=master)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![GitHub release](https://img.shields.io/github/release/qntfy/frizzle.svg?maxAge=3600)](https://github.com/qntfy/frizzle/releases/latest)
-[![Go Report Card](https://goreportcard.com/badge/github.com/qntfy/frizzle)](https://goreportcard.com/report/github.com/qntfy/frizzle)
+[![Go Report Card](https://goreportcard.com/badge/github.com/qntfy/frizzle#1)](https://goreportcard.com/report/github.com/qntfy/frizzle)
 [![GoDoc](https://godoc.org/github.com/qntfy/frizzle?status.svg)](http://godoc.org/github.com/qntfy/frizzle)
 
 Frizzle is a magic message (`Msg`) bus designed for parallel processing w many goroutines.
