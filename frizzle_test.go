@@ -51,6 +51,10 @@ func TestNilSource(t *testing.T) {
 
 	err := f.Send(testMsg, testSinkName)
 	assert.Nil(t, err)
+
+	mSink.On("Close").Return(nil)
+	err = f.Close()
+	assert.Nil(t, err)
 	mSink.AssertExpectations(t)
 }
 
@@ -80,6 +84,10 @@ func TestNilSink(t *testing.T) {
 
 	receivedMsg := <-f.Receive()
 	assert.Equal(t, testMsgData, receivedMsg.Data())
+
+	mSource.On("Close").Return(nil)
+	err := f.Close()
+	assert.Nil(t, err)
 	mSource.AssertExpectations(t)
 }
 
