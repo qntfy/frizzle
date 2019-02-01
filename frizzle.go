@@ -153,6 +153,9 @@ func (f *Friz) Fail(m Msg) error {
 // the configured Source and Sink. Any Msgs which are still unAcked after the
 // timeout has expired are Failed.
 func (f *Friz) FlushAndClose(timeout time.Duration) error {
+	if f.source == nil {
+		panic("FlushAndClose() should not be called without a Source configured; use Close()")
+	}
 	f.source.Stop()
 	tick := time.NewTicker(timeout / 10).C
 	timeoutAlarm := time.After(timeout)
@@ -179,11 +182,15 @@ func (f *Friz) FlushAndClose(timeout time.Duration) error {
 // The Frizzle must not be used afterward.
 func (f *Friz) Close() error {
 	f.log.Debug("Attempting to Close frizzle")
-	if err := f.sink.Close(); err != nil {
-		return err
+	if f.sink != nil {
+		if err := f.sink.Close(); err != nil {
+			return err
+		}
 	}
-	if err := f.source.Close(); err != nil {
-		return err
+	if f.source != nil {
+		if err := f.source.Close(); err != nil {
+			return err
+		}
 	}
 	if f.failSink != nil {
 		if err := f.failSink.Close(); err != nil {
